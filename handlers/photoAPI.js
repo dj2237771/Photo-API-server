@@ -26,7 +26,7 @@ async function getRandomPhoto(req, res) {
   const url = `https://api.unsplash.com/photos/random/?client_id=${KEY}`;
   let photoInfo = await superagent.get(url);
   let photoData = photoInfo.body;
-  console.log(photoData);
+
   let newPhto = new Photo(photoData);
   res.send(newPhto);
 }
