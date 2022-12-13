@@ -24,7 +24,7 @@ async function getPhoto(req, res) {
 }
 async function getRandomPhoto(req, res) {
   const url = `https://api.unsplash.com/photos/random/?client_id=${KEY}`;
-  let photoInfo = await superagent.get(url);
+  let photoInfo =async await superagent.get(url);
   let photoData = photoInfo.body;
 
   let newPhto = new Photo(photoData);
@@ -32,7 +32,7 @@ async function getRandomPhoto(req, res) {
 }
 class Photo {
   constructor(data) {
-    this.name = data.id;
+    this.name = data.user.name;
     this.discrption = data.description;
     this.url = data.urls.full;
   }
